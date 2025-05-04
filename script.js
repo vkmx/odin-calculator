@@ -1,6 +1,12 @@
-let num1 = 0;
-let num2 = 0;
-let operator = null;
+let num1        = null;
+let num2        = null;
+let operator    = null;
+
+
+let keypadContainer     = document.querySelector('.keypad');
+let digitsContainer     = document.querySelector('.digits');
+let operationContainer  = document.querySelector('.operation');
+let clearButton         = document.querySelector('.clear > button');
 
 function add() {
     return num1 + num2;
@@ -43,3 +49,41 @@ function operate( number1, number2, operator ) {
 
     return result;
 }
+
+function updateDisplayDigits( element ) {
+
+    let currentContent = digitsContainer.textContent;
+    digitsContainer.textContent = currentContent + element.textContent;
+}
+
+function updateDisplayOperation( element ) {
+    operationContainer.textContent = element.textContent;
+}
+
+function clearDisplayAndVariables() {
+
+    operationContainer.textContent  = '';
+    digitsContainer.textContent     = '';
+
+    num1        = null;
+    num2        = null;
+    operator    = null;
+
+}
+
+keypadContainer.addEventListener( 'click', ( event ) => {
+
+    if( event.target.className === 'number' ) {
+        updateDisplayDigits( event.target );
+    }
+
+    if( event.target.className === 'operator' ) {
+        updateDisplayOperation( event.target );
+    }
+
+
+} );
+
+clearButton.addEventListener( 'click', ( event ) => {
+    clearDisplayAndVariables();
+} );
