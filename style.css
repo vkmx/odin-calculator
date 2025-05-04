@@ -65,7 +65,7 @@ button:hover {
 }
 
 
-.buttons {
+.keypad {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -73,14 +73,14 @@ button:hover {
     padding: 5px;
 }
 
-.buttons .key {
+.keypad .key {
     text-align: center;
     width: 20%;
     box-sizing: border-box;
     flex: 0 1 auto;
 }
 
-.buttons .key button {
+.keypad .key button {
     font-size: 22px;
     border-radius: 25px;
     padding: 8% 10%;
