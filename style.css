@@ -46,19 +46,24 @@
     text-align: right;
 }
 
+button {
+    background-color: whitesmoke;
+    color: #22223B;
+}
+
+button:hover {
+    background-color: white;
+    cursor: pointer;
+}
+
 .clear button {
     padding: 7px 20px;
     font-size: 22px;
     border-radius: 10px;
-    background-color: whitesmoke;
     width: 125px;
     margin: 10px 15px;
 }
 
-.clear button:hover {
-    background-color: white;
-    cursor: pointer;
-}
 
 .buttons {
     display: flex;
@@ -70,13 +75,15 @@
 
 .buttons .key {
     text-align: center;
-    font-size: 22px;
     width: 20%;
-    background-color: whitesmoke;
-    color: #22223B;
-    border-radius: 25px;
     box-sizing: border-box;
     flex: 0 1 auto;
-    padding: 4% 10%;
-    border: 2px solid black;
+}
+
+.buttons .key button {
+    font-size: 22px;
+    border-radius: 25px;
+    padding: 8% 10%;
+    border: 1px solid #22223B;
+    width: 80px;
 }
