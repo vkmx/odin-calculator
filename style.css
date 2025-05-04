@@ -25,11 +25,21 @@
     font-family: 'Michroma', sans-serif;
     color: white;
     background-color: #22223B;
-    padding: 30px;
     border: 2px solid black;
     margin: 10px;
-    font-size: 35px;
     border-radius: 15px;
+}
+
+.display div {
+    padding-right: 10px;
+}
+
+.display .operation {
+    font-size: 25px;
+}
+
+.display .digits {
+    font-size: 35px;
 }
 
 .clear {
@@ -43,6 +53,11 @@
     background-color: whitesmoke;
     width: 125px;
     margin: 10px 15px;
+}
+
+.clear button:hover {
+    background-color: white;
+    cursor: pointer;
 }
 
 .buttons {
