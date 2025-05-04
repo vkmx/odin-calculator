@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.wrap {
+    background-color: #F2E9E4;
+    padding-top: 50px;
+    height: 100vh;
+}
+
+.container {
+    width: 400px;
+    height: 600px;
+    margin: 0 auto;
+    background-color: #C9ADA7;
+    padding: 5px 10px;
+}
+
+.display {
+    text-align: right;
+    font-family: 'Michroma', sans-serif;
+    color: white;
+    background-color: #22223B;
+    padding: 30px;
+    border: 2px solid black;
+    margin: 10px;
+    font-size: 35px;
+    border-radius: 15px;
+}
+
+.clear {
+    text-align: right;
+}
+
+.clear button {
+    padding: 7px 20px;
+    font-size: 22px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    width: 125px;
+    margin: 10px 15px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px;
+    padding: 5px;
+}
+
+.buttons .key {
+    text-align: center;
+    font-size: 22px;
+    width: 20%;
+    background-color: whitesmoke;
+    color: #22223B;
+    border-radius: 25px;
+    box-sizing: border-box;
+    flex: 0 1 auto;
+    padding: 4% 10%;
+    border: 2px solid black;
+}
