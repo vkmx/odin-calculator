@@ -39,25 +39,39 @@ function operate( number1, number2, operator ) {
         case '-':
             result = substract();
             break;
-        case '*':
+        case 'x':
             result = multiply();
             break;
-        case '/':
+        case '÷':
             result = divide()
             break;
     }
 
-    return result;
+    return Number.parseFloat( result ).toFixed(2);
 }
 
-function updateDisplayDigits( element ) {
+function decimalPlacePresentInText( text ) {
+
+    if( text.indexOf( '.' ) > -1 ) {
+        return true;
+    }
+
+    return false;
+}
+
+function updateDisplayDigits( number ) {
 
     let currentContent = digitsContainer.textContent;
-    digitsContainer.textContent = currentContent + element.textContent;
+
+    if( number === '.' && decimalPlacePresentInText( currentContent ) ) {
+        return;
+    }
+
+    digitsContainer.textContent = currentContent + number;
 }
 
-function updateDisplayOperation( element ) {
-    operationContainer.textContent = element.textContent;
+function updateDisplayOperator( sign ) {
+    operationContainer.textContent = sign;
 }
 
 function clearDisplayAndVariables() {
@@ -71,14 +85,56 @@ function clearDisplayAndVariables() {
 
 }
 
+function clearDigitsContainer() {
+    digitsContainer.textContent = '';
+}
+
+function hanldeOperatorButtonClicks( element ) {
+
+    if( operator !== null && num1 !== null && num2 !== null ) {
+        let result = operate( num1, num2, operator );
+        num1 = result;
+        num2 = null;
+        clearDigitsContainer();
+        updateDisplayDigits( result );
+
+    }
+
+    operator = element.textContent;
+
+}
+
+function hanldeNumberButtonClicks( element ) {
+
+    if( operator === null ) {
+        updateDisplayDigits( element.textContent );
+        num1 = Number( digitsContainer.textContent );
+        return;
+    }
+
+    if( operator !== null && num2 === null ) {
+        clearDigitsContainer();
+        updateDisplayDigits( element.textContent );
+        num2 = Number( digitsContainer.textContent );
+        return;
+    }
+
+    if( operator !== null && num2 !== null ) {
+        updateDisplayDigits( element.textContent );
+        num2 = Number( digitsContainer.textContent );
+    }
+
+}
+
 keypadContainer.addEventListener( 'click', ( event ) => {
 
     if( event.target.className === 'number' ) {
-        updateDisplayDigits( event.target );
+        hanldeNumberButtonClicks( event.target );
     }
 
     if( event.target.className === 'operator' ) {
-        updateDisplayOperation( event.target );
+        updateDisplayOperator( event.target.textContent );
+        hanldeOperatorButtonClicks( event.target );
     }
 
 
