@@ -47,7 +47,9 @@ function operate( number1, number2, operator ) {
             break;
     }
 
-    return Number.parseFloat( result ).toFixed(2);
+    let formatted = Number.parseFloat(result).toFixed(2);
+
+    return Number.parseFloat( formatted );
 }
 
 function decimalPlacePresentInText( text ) {
@@ -61,7 +63,7 @@ function decimalPlacePresentInText( text ) {
 
 function updateDisplayDigits( number ) {
 
-    let currentContent = digitsContainer.textContent;
+    let currentContent  = digitsContainer.textContent;
 
     if( number === '.' && decimalPlacePresentInText( currentContent ) ) {
         return;
