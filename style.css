@@ -17,11 +17,19 @@ body {
 
 .container {
     width: 400px;
-    height: 600px;
+    height: 460px;
     margin: 0 auto;
     background-color: #ced6dd;
     padding: 5px 10px;
     border-radius: 10px;
+}
+
+.branding {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 20px;
+    margin-top: 25px;
+    color: #7f889b;
 }
 
 .display {
