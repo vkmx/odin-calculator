@@ -120,6 +120,11 @@ function hanldeNumberButtonClicks( element ) {
         return;
     }
 
+    if( operator === '=' ) {
+        clearDisplayAndVariables();
+        hanldeNumberButtonClicks( element );
+    }
+
     if( operator !== null && num2 === null ) {
         clearDigitsContainer();
         updateDisplayDigits( element.textContent );
