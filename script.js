@@ -23,8 +23,6 @@ function multiply() {
 }
 
 function divide() {
-
-    if( num2 === 0 ) return 'Undefined';
     return num1 / num2;
 }
 
@@ -100,6 +98,14 @@ function clearDigitsContainer() {
 function hanldeOperatorButtonClicks( element ) {
 
     if( operator !== null && num1 !== null && num2 !== null ) {
+
+        if( num2 === 0 && operator === '÷' ) {
+            clearDisplayAndVariables();
+            updateDisplayDigits( 'Just Whyy!' );
+            operator = element.textContent;
+            return;
+        }
+
         let result = operate( num1, num2, operator );
         num1 = result;
         num2 = null;
