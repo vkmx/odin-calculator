@@ -1,11 +1,13 @@
 let num1        = null;
 let num2        = null;
 let operator    = null;
+let expression  = null;
 
 
 let keypadContainer     = document.querySelector('.keypad');
 let digitsContainer     = document.querySelector('.digits');
-let operationContainer  = document.querySelector('.operation');
+let operationContainer  = document.querySelector('.operation > .sign');
+let expressionContainer = document.querySelector('.operation > .expression');
 let clearButton         = document.querySelector('.clear > button');
 
 function add() {
@@ -74,6 +76,10 @@ function updateDisplayDigits( number ) {
 
 function updateDisplayOperator( sign ) {
     operationContainer.textContent = sign;
+}
+
+function updateDisplayExpression() {
+
 }
 
 function clearDisplayAndVariables() {
