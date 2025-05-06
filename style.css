@@ -11,7 +11,6 @@ body {
 }
 
 .wrap {
-    /*background-color: #F2E9E4;*/
     padding-top: 50px;
     height: 100vh;
 }
@@ -22,6 +21,7 @@ body {
     margin: 0 auto;
     background-color: #ced6dd;
     padding: 5px 10px;
+    border-radius: 10px;
 }
 
 .display {
@@ -31,6 +31,7 @@ body {
     background-color: #22223B;
     border: 2px solid black;
     margin: 10px;
+    margin-top: 20px;
     border-radius: 15px;
 }
 
