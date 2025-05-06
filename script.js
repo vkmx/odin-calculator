@@ -95,14 +95,18 @@ function clearDigitsContainer() {
     digitsContainer.textContent = '';
 }
 
-function hanldeOperatorButtonClicks( element ) {
+function hanldeOperatorButtonClicks( op ) {
+
+    if( operator === null ) {
+
+    }
 
     if( operator !== null && num1 !== null && num2 !== null ) {
 
         if( num2 === 0 && operator === '÷' ) {
             clearDisplayAndVariables();
             updateDisplayDigits( 'Just Whyy!' );
-            operator = element.textContent;
+            operator = op;
             return;
         }
 
@@ -114,7 +118,7 @@ function hanldeOperatorButtonClicks( element ) {
 
     }
 
-    operator = element.textContent;
+    operator = op;
 
 }
 
@@ -153,7 +157,7 @@ keypadContainer.addEventListener( 'click', ( event ) => {
 
     if( event.target.className === 'operator' ) {
         updateDisplayOperator( event.target.textContent );
-        hanldeOperatorButtonClicks( event.target );
+        hanldeOperatorButtonClicks( event.target.textContent );
     }
 
 
@@ -162,3 +166,8 @@ keypadContainer.addEventListener( 'click', ( event ) => {
 clearButton.addEventListener( 'click', ( event ) => {
     clearDisplayAndVariables();
 } );
+
+
+document.body.addEventListener( 'keydown', ( event ) => {
+    console.log( event );
+} )
