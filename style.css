@@ -78,6 +78,8 @@ button:hover {
     border-radius: 10px;
     width: 125px;
     margin: 10px 15px;
+    border-radius: 25px;
+    border: 1px solid #22223B;
 }
 
 
