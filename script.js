@@ -1,7 +1,8 @@
 let num1        = null;
 let num2        = null;
 let operator    = null;
-let expression  = null;
+let expression  = [];
+let calculated  = false;
 
 
 let keypadContainer     = document.querySelector('.keypad');
@@ -73,21 +74,51 @@ function updateDisplayDigits( number ) {
 }
 
 function updateDisplayOperator( sign ) {
+
+    if( calculated ) return;
+
     operationContainer.textContent = sign;
 }
 
 function updateDisplayExpression() {
 
+    if( calculated ) return;
+
+    let currentDigits = digitsContainer.textContent;
+
+    if( expression.length > 1 ) {
+        let lastItem = expression.pop();
+
+        if( digitsContainer.dataset.isCalculated && num2 === null ) {
+            expression.push( operator );
+        } else {
+            expression.push( lastItem );
+            expression.push( currentDigits );
+            expression.push( operator );
+        }
+
+    }
+
+    if( expression.length === 0 ) {
+        expression.push( currentDigits );
+        expression.push( operator );
+    }
+
+    if( operator === '=' ) expression.pop();
+
+    expressionContainer.textContent = expression.join('');;
 }
 
 function clearDisplayAndVariables() {
 
     operationContainer.textContent  = '';
     digitsContainer.textContent     = '';
+    expressionContainer.textContent = '';
 
     num1        = null;
     num2        = null;
     operator    = null;
+    expression  = [];
 
 }
 
@@ -97,28 +128,34 @@ function clearDigitsContainer() {
 
 function hanldeOperatorButtonClicks( op ) {
 
-    if( operator === null ) {
+    if( calculated ) return;
 
-    }
+    let currentOperator = operator;
 
-    if( operator !== null && num1 !== null && num2 !== null ) {
+    operator = op;
 
-        if( num2 === 0 && operator === '÷' ) {
+    updateDisplayExpression();
+
+    if( currentOperator !== null && num1 !== null && num2 !== null ) {
+
+        if( num2 === 0 && currentOperator === '÷' ) {
             clearDisplayAndVariables();
             updateDisplayDigits( 'Just Whyy!' );
-            operator = op;
+            //operator = op;
             return;
         }
 
-        let result = operate( num1, num2, operator );
+        let result = operate( num1, num2, currentOperator );
         num1 = result;
         num2 = null;
         clearDigitsContainer();
         updateDisplayDigits( result );
+        if( operator === '=' ) calculated = true;
+        digitsContainer.setAttribute( 'data-is-calculated', true );
 
     }
 
-    operator = op;
+
 
 }
 
@@ -127,6 +164,7 @@ function hanldeNumberButtonClicks( element ) {
     if( operator === null ) {
         updateDisplayDigits( element.textContent );
         num1 = Number( digitsContainer.textContent );
+        calculated = false;
         return;
     }
 
@@ -145,6 +183,7 @@ function hanldeNumberButtonClicks( element ) {
     if( operator !== null && num2 !== null ) {
         updateDisplayDigits( element.textContent );
         num2 = Number( digitsContainer.textContent );
+        digitsContainer.removeAttribute( 'data-is-calculated ');
     }
 
 }
