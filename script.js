@@ -188,6 +188,41 @@ function hanldeNumberButtonClicks( element ) {
 
 }
 
+function handleKeyboardEntries( event ) {
+
+    let id              = '';
+    let key             = event.key;
+    let operatorKeys    = [ '+', '-', '*', '/', '=', 'Enter' ];
+
+    if( parseInt( key ) ) {
+        id = `#num${key}`;
+    }
+
+    if( key === '.' ) {
+        id = '#num-decimal';
+    }
+
+    if( operatorKeys.includes( key ) ) {
+
+        event.preventDefault();
+
+        if( key === '+' ) id = '#op-add';
+        if( key === '-' ) id = '#op-sub';
+        if( key === '*' ) id = '#op-mlt';
+        if( key === '/' ) id = '#op-div';
+        if( key === '=' ) id = '#op-eql';
+        if( key === 'Enter' ) id = '#op-eql';
+
+    }
+
+    if( id !== '' ) {
+
+        let button = document.querySelector(id);
+        if( button ) button.click();
+    }
+
+}
+
 keypadContainer.addEventListener( 'click', ( event ) => {
 
     if( event.target.className === 'number' ) {
@@ -208,5 +243,5 @@ clearButton.addEventListener( 'click', ( event ) => {
 
 
 document.body.addEventListener( 'keydown', ( event ) => {
-    console.log( event );
+    handleKeyboardEntries( event );
 } )
